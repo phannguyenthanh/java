@@ -10,7 +10,9 @@ package javaapplication1;
  * @author thanh
  */
 public class pane extends javax.swing.JFrame {
-
+    
+    songaunhien snn1 = null ;
+    songaunhien snn2 = null ;
     /**
      * Creates new form pane
      */
@@ -32,6 +34,7 @@ public class pane extends javax.swing.JFrame {
         btnrun = new javax.swing.JButton();
         lbtt1 = new javax.swing.JLabel();
         lbtt2 = new javax.swing.JLabel();
+        btnstop = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,6 +53,13 @@ public class pane extends javax.swing.JFrame {
 
         lbtt2.setText("trang thai");
 
+        btnstop.setText("stop");
+        btnstop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnstopActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -60,15 +70,15 @@ public class pane extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(so2)
                 .addGap(53, 53, 53))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnrun, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(159, 159, 159))
             .addGroup(layout.createSequentialGroup()
                 .addGap(47, 47, 47)
-                .addComponent(lbtt1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbtt1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnrun, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
-                .addComponent(lbtt2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lbtt2, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
+                    .addComponent(btnstop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(26, 26, 26))
         );
         layout.setVerticalGroup(
@@ -85,9 +95,11 @@ public class pane extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(106, 106, 106)
                         .addComponent(lbtt2)))
-                .addGap(60, 60, 60)
-                .addComponent(btnrun)
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addGap(57, 57, 57)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnrun)
+                    .addComponent(btnstop))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
 
         pack();
@@ -95,12 +107,20 @@ public class pane extends javax.swing.JFrame {
 
     private void btnrunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrunActionPerformed
         // TODO add your handling code here:
-        songaunhien snn1 = new songaunhien(so1, lbtt1, 10);
-        songaunhien snn2 = new songaunhien(so2, lbtt2, 1);
+        snn1 = new songaunhien(so1, lbtt1, 10);
+        snn2 = new songaunhien(so2, lbtt2, 1);
         
         
         
     }//GEN-LAST:event_btnrunActionPerformed
+
+    private void btnstopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnstopActionPerformed
+        // TODO add your handling code here:
+        snn1.thread.stop();
+        snn2.thread.stop();
+        
+        
+    }//GEN-LAST:event_btnstopActionPerformed
 
     /**
      * @param args the command line arguments
@@ -139,6 +159,7 @@ public class pane extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnrun;
+    private javax.swing.JButton btnstop;
     private javax.swing.JLabel lbtt1;
     private javax.swing.JLabel lbtt2;
     private javax.swing.JLabel so1;
