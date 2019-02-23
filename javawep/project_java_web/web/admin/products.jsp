@@ -44,13 +44,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <%
-                                        String status = (String)request.getAttribute("colNames");
-//                                        String alert = (String)request.getAttribute("alert");
-                                      
-                                           
-                                    %>
-                                 
+                                  
                                     
                                     <%
                                                 products product = new products();

@@ -59,6 +59,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
       out.write("\n");
+      out.write("\n");
       out.write("<!doctype html>\n");
       out.write("\n");
       out.write("\n");
@@ -67,11 +68,13 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<head>\n");
       out.write("    <!-- Required meta tags -->\n");
       out.write("    <meta charset=\"utf-8\">\n");
+      out.write("    \n");
       out.write("    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">\n");
       out.write("    <!-- Bootstrap CSS -->\n");
       out.write("    <link rel=\"stylesheet\" href=\"assets/vendor/bootstrap/css/bootstrap.min.css\">\n");
       out.write("    <link href=\"assets/vendor/fonts/circular-std/style.css\" rel=\"stylesheet\">\n");
       out.write("    <link rel=\"stylesheet\" href=\"assets/libs/css/style.css\">\n");
+      out.write("    \n");
       out.write("    <link rel=\"stylesheet\" href=\"assets/vendor/fonts/fontawesome/css/fontawesome-all.css\">\n");
       out.write("    <link rel=\"stylesheet\" href=\"assets/vendor/charts/chartist-bundle/chartist.css\">\n");
       out.write("    <link rel=\"stylesheet\" href=\"assets/vendor/charts/morris-bundle/morris.css\">\n");
@@ -584,6 +587,8 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            </div>\n");
       out.write("                            <div class=\"card-body\">\n");
       out.write("                                <div class=\"table-responsive\">\n");
+      out.write("                                  \n");
+      out.write("                                    \n");
       out.write("                                    ");
 
                                                 products product = new products();
@@ -666,7 +671,9 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("</td>\n");
       out.write("                                                <td>\n");
       out.write("                                                    <a href=\"#\" class=\"btn btn-brand active\">Sửa </a>\n");
-      out.write("                                                    <a href=\"#\" class=\"btn btn-danger active\">Xóa </a>\n");
+      out.write("                                                    <a href=\"../products_delete?id=");
+      out.print(list.get(i).getId());
+      out.write("\" class=\"btn btn-danger active\">Xóa </a>\n");
       out.write("                                                    <a href=\"#\" class=\"btn btn-info active\">Chi Tiết </a>\n");
       out.write("                                                </td>\n");
       out.write("                                            </tr>\n");
@@ -746,7 +753,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <div class=\"card\">\n");
       out.write("            <h5 class=\"card-header\">Validation Types</h5>\n");
       out.write("            <div class=\"card-body\">\n");
-      out.write("                <form method=\"post\" action=\"CRUDproducts\"\n");
+      out.write("                <form method=\"post\" action=\"../products_add\"\n");
       out.write("                    id=\"validationform\" \n");
       out.write("                    data-parsley-validate=\"\"\n");
       out.write("                    novalidate=\"\">\n");
