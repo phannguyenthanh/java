@@ -29,7 +29,7 @@ public class tbLophoc {
             return null;
         else      
         {
-            String sql = "SELECT * FROM tbLophoc";
+            String sql = "SELECT * FROM tblophoc";
             try {
                 Statement stm = cnn.createStatement();
                 ResultSet rs = stm.executeQuery(sql);
@@ -53,7 +53,7 @@ public class tbLophoc {
         if(cnn==null)
             return -1;
         else{
-            String sql = "INSERT INTO tbLophoc VALUES(NULL,?)";
+            String sql = "INSERT INTO tblophoc VALUES(NULL,?)";
             try {
                 PreparedStatement stm = cnn.prepareStatement(sql);
                 stm.setString(1, tenlop);
@@ -74,7 +74,7 @@ public class tbLophoc {
         if(cnn==null)
             return -1;
         else{
-            String sql = "DELETE FROM tbLophoc WHERE Malop=?";
+            String sql = "DELETE FROM tblophoc WHERE Malop=?";
             try {
                 PreparedStatement stm = cnn.prepareStatement(sql);
                 stm.setInt(1, malop);
@@ -95,7 +95,7 @@ public class tbLophoc {
         if(cnn==null)
             return -1;
         else{
-            String sql = "UPDATE tbLophoc SET Tenlop=? WHERE Malop=?";
+            String sql = "UPDATE tblophoc SET Tenlop=? WHERE Malop=?";
             try {
                 PreparedStatement stm = cnn.prepareStatement(sql);
                 stm.setString(1, tenlop);
@@ -119,7 +119,7 @@ public class tbLophoc {
             return null;
         else
         {
-            String sql = "SELECT * FROM tbLophoc WHERE Malop = " + Malop;
+            String sql = "SELECT * FROM tblophoc WHERE Malop = " + Malop;
             try {
                 Statement stm = cnn.createStatement();
                 ResultSet rs = stm.executeQuery(sql);
