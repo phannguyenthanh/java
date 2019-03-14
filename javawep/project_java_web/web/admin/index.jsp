@@ -1,26 +1,32 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
-<!doctype html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 
 
 <html lang="en">
  
 <head>
+    
     <!-- Required meta tags -->
     <meta charset="utf-8">
+    <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <META name="GENERATOR" content="IBM WebSphere Studio">
+    <META http-equiv="Content-Style-Type" content="text/css">
+    
     
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
     <link href="assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/libs/css/style.css">
-    
     <link rel="stylesheet" href="assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
     <link rel="stylesheet" href="assets/vendor/charts/chartist-bundle/chartist.css">
     <link rel="stylesheet" href="assets/vendor/charts/morris-bundle/morris.css">
     <link rel="stylesheet" href="assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/vendor/charts/c3charts/c3.css">
     <link rel="stylesheet" href="assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
+    <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <!--jquery-validate-->
+    <script src="assets/validate/jquery-validate.js"></script>
     <title>Concept - Bootstrap 4 Admin Dashboard Template</title>
 </head>
 
@@ -71,6 +77,15 @@
                         
                     %>
                          <%@include file="Views/product/create.jsp" %>
+                    <%
+                        }else if( status.equals("EditProduct")){
+                    %>
+                   
+                         <%@include file="Views/product/update.jsp" %>
+                    <%
+                        }else if( status.equals("DetailProduct")){
+                    %>
+                        <%@include file="Views/product/details.jsp" %>
                     <%
                         }
                     %>
@@ -623,7 +638,7 @@
     <!-- ============================================================== -->
     <!-- Optional JavaScript -->
     <!-- jquery 3.3.1 -->
-    <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    
     <!-- bootstap bundle js -->
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
     <!-- slimscroll js -->
@@ -645,3 +660,10 @@
 </body>
  
 </html>
+
+
+
+
+
+
+

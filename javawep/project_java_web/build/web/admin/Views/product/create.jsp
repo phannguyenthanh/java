@@ -9,19 +9,22 @@
 <%@page import="java.util.Vector"%>
 <%@page import="Controller.types"%>
 <%@page import="Models.Types"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page language="java" contentType="text/html" pageEncoding="UTF-8"%>
+<%--<%@ page language="java" contentType="text/html; charset=UTF-8"--%>
+<!--pageEncoding="UTF-8"%>-->
+     
 <!DOCTYPE html>
 <div class="row">
     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
         <div class="page-header">
-            <h2 class="pageheader-title">Form Validations </h2>
-            <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
+            <h2 class="pageheader-title">Thêm</h2>
+           
             <div class="page-breadcrumb">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Forms</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Form Validations</li>
+                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Products</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Thêm</li>
                     </ol>
                 </nav>
             </div>
@@ -34,12 +37,26 @@
     <!-- ============================================================== -->
     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
         <div class="card">
-            <h5 class="card-header">Validation Types</h5>
+            <h5 class="card-header">Products</h5>
             <div class="card-body">
-                <form method="post" action="../products_add"
+                
+                                    <%
+                                    if(session.getAttribute("status")== "danger"){
+                                    %>
+                                    <div class="alert alert-danger" role="alert">
+                                        ${alert}
+                                    </div>
+                                    <%
+                                        }
+                                        session.removeAttribute("status");
+                                    %>
+                <form 
+                    method="post" 
+                    action="../products_add" 
+                    enctype = "multipart/form-data"
                     id="validationform" 
-                    data-parsley-validate=""
-                    novalidate="">
+                    
+                    >
                     <div class="form-group row">
                         <label class="col-12 col-sm-3 col-form-label text-sm-right">Tên</label>
                         <div class="col-12 col-sm-8 col-lg-6">
@@ -55,7 +72,7 @@
                     <div class="form-group row">
                         <label class="col-12 col-sm-3 col-form-label text-sm-right"> Ảnh  </label>
                         <div class="col-12 col-sm-8 col-lg-6">
-                            <input type="text" required="" name="avatar"  placeholder="Ảnh " class="form-control">
+                            <input type="file" required="" name="avatar"  placeholder="Ảnh " class="form-control">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -79,7 +96,14 @@
                     <div class="form-group row">
                         <label class="col-12 col-sm-3 col-form-label text-sm-right"> Model Year </label>
                         <div class="col-12 col-sm-8 col-lg-6">
-                            <input type="text" required="" name="model_year"  placeholder="Model của năm "form-control">
+                            <input type="text" required="" name="model_year"  placeholder="Model của năm " class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-12 col-sm-3 col-form-label text-sm-right"> Nội dung</label>
+                        <div class="col-12 col-sm-8 col-lg-6">
+                            <input type="text" required="" name="content"  placeholder="Nội dung " class="form-control">
+                            
                         </div>
                     </div>
 
@@ -213,7 +237,7 @@
                     <div class="form-group row text-right">
                         <div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
                             <button type="submit" class="btn btn-space btn-primary">Submit</button>
-                            <button class="btn btn-space btn-secondary">Cancel</button>
+                             <a href="index.jsp" class="btn btn-space btn-secondary" >Cancel</a>
                         </div>
                     </div>
                 </form>
@@ -224,3 +248,4 @@
     <!-- end valifation types -->
     <!-- ============================================================== -->
 </div>
+<script src="assets/validate/products.js"></script>

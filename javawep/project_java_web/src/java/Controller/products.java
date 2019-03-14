@@ -7,6 +7,7 @@ package Controller;
 
 import CSDL.DB;
 import Models.Products;
+import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -93,7 +94,9 @@ public class products {
 
             con.close();
         } catch (Exception ex) {
+            out.print(ex.getMessage());
             ex.printStackTrace();
+            
         }
 
         return status;
@@ -106,38 +109,38 @@ public class products {
             PreparedStatement ps = con.prepareStatement(
                     "UPDATE `products` SET "
                             
-                            + "`name` = ?', "
+                            + "`name` = ?, "
                             + "`price` = ?, "
                             + "`made_in` = ?, "
                             + "`capacity` = ?, "
                             + "`color` = ?, "
-                            + "`created_at` = ?, "
                             + "`model_year` = ?, "
                             + "`location` = ?, "
                             + "`type` = ?, "
                             + "`avatar` = ?, "
                             + "`brand` = ?, "
                             + "`content` = ? "
-                            + "WHERE `products`.`id` IS ? ");
+                            + " WHERE `id` = ? ");
             ps.setString(1, e.getName());
             ps.setInt(2, e.getPrice());
             ps.setString(3, e.getMade_in());
             ps.setString(4, e.getCapacity());
             ps.setString(5, e.getColor());
-            ps.setString(6, e.getCreated_at());
-            ps.setString(7, e.getModel_year());
-            ps.setString(8, e.getLocation());
-            ps.setInt(9, e.getType());
-            ps.setString(10, e.getAvatar());
-            ps.setInt(11, e.getBrand());
-            ps.setString(12, e.getContent());
+            ps.setString(6, e.getModel_year());
+            ps.setString(7, e.getLocation());
+            ps.setInt(8, e.getType());
+            ps.setString(9, e.getAvatar());
+            ps.setInt(10, e.getBrand());
+            ps.setString(11, e.getContent());
             ps.setInt(12, e.getId());
 
             status = ps.executeUpdate();
 
             con.close();
         } catch (Exception ex) {
+            out.print(ex.getMessage());
             ex.printStackTrace();
+            
         }
 
         return status;
@@ -192,28 +195,6 @@ public class products {
         return e;
     }
 
-//    public static List<Emp> getAllEmployees() {
-//        List<Emp> list = new ArrayList<Emp>();
-//
-//        try {
-//            Connection con = EmpDao.getConnection();
-//            PreparedStatement ps = con.prepareStatement("select * from user905");
-//            ResultSet rs = ps.executeQuery();
-//            while (rs.next()) {
-//                Emp e = new Emp();
-//                e.setId(rs.getInt(1));
-//                e.setName(rs.getString(2));
-//                e.setPassword(rs.getString(3));
-//                e.setEmail(rs.getString(4));
-//                e.setCountry(rs.getString(5));
-//                list.add(e);
-//            }
-//            con.close();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//
-//        return list;
-//    }
+
 
 }

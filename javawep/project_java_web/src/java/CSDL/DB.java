@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 public class DB extends HttpServlet {
 
     static String user = "root";
-    static String pass = "123456";
+    static String pass = "";
     static String url = "jdbc:mysql://localhost:3306/xe_pkl?useUnicode=true&characterEncoding=utf8";
     public static Connection KetnoiCSDL()
     {

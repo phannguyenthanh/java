@@ -14,14 +14,13 @@
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="page-header">
-                            <h2 class="pageheader-title">Data Tables</h2>
-                            <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
+                            <h2 class="pageheader-title">Tables</h2>
+                            
                             <div class="page-breadcrumb">
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Tables</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Data Tables</li>
+                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Products</a></li>
                                     </ol>
                                 </nav>
                             </div>
@@ -39,14 +38,29 @@
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h5 class="mb-0">Data Tables - Multi item selection </h5>
-                                <p>This example shows DataTables and the Select extension being used with Bootstrap 4 providing the styling.</p>
+                                <h5 class="mb-0">Products </h5>
+                               
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
+                                    <div>
+                                        <div>
+                                            
+                                            <%
+                                                
+                                                if(session.getAttribute("status")== "success"){
+                                            %>
                                   
+                                            <div class="alert alert-success" role="alert">
+                                                ${alert}
+                                            </div>
+                                  
+                                    <%
+                                        }
+                                    %>
                                     
                                     <%
+                                                session.removeAttribute("status");
                                                 products product = new products();
                                                 Vector<Products> list = product.all();
                                                 
@@ -65,10 +79,9 @@
                                             <tr>
                                                 <th>id</th>
                                                 <th>tên</th>
+                                                <th>ảnh</th>
                                                 <th>giá</th>
                                                 <th>Nơi sx</th>
-                                                <th>Phân khối </th>
-                                                <th>Màu </th>
                                                 <th>Đời xe </th>
                                                 <th>Loại xe </th>
                                                 <th>Địa điểm </th>
@@ -95,17 +108,20 @@
                                                 <td><%=list.get(i).getId()%></td>
                                                 <td><%=list.get(i).getName()%></td>
                                                 <td><%=list.get(i).getPrice()%></td>
-                                                <td><%=list.get(i).getCapacity()%></td>
+                                                <td>
+                                                    <img src="<%=list.get(i).getAvatar()%>" width="100px" />
+                                                    
+                                                </td>
+                                                
                                                 <td><%=list.get(i).getMade_in()%></td>
-                                                <td><%=list.get(i).getColor()%></td>
                                                 <td><%=list.get(i).getModel_year()%></td>
                                                 <td><%=list.get(i).getType()%></td>
                                                 <td><%=list.get(i).getLocation()%></td>
                                                 <td><%=list.get(i).getCreated_at()%></td>
                                                 <td>
-                                                    <a href="#" class="btn btn-brand active">Sửa </a>
+                                                    <a href="index.jsp?status=EditProduct&id=<%=list.get(i).getId()%>" class="btn btn-brand active">Sửa </a>
                                                     <a href="../products_delete?id=<%=list.get(i).getId()%>" class="btn btn-danger active">Xóa </a>
-                                                    <a href="#" class="btn btn-info active">Chi Tiết </a>
+                                                    <a href="index.jsp?status=DetailProduct&id=<%=list.get(i).getId()%>" class="btn btn-info active">Chi Tiết </a>
                                                 </td>
                                             </tr>
                                             <%
@@ -116,10 +132,10 @@
                                             <tr>
                                                 <th>id</th>
                                                 <th>tên</th>
+                                                <th>ảnh</th>
                                                 <th>giá</th>
                                                 <th>Nơi sx</th>
-                                                <th>Phân khối </th>
-                                                <th>Màu </th>
+                                               
                                                 <th>Đời xe </th>
                                                 <th>Loại xe </th>
                                                 <th>Địa điểm </th>
@@ -138,3 +154,4 @@
                     <!-- end data table multiselects  -->
                     <!-- ============================================================== -->
                 </div>
+ 

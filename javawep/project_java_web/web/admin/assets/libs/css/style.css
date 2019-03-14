@@ -154,7 +154,9 @@
 
 /* 0.1. Body / Typography
    ========================================================================== */
-
+.error{
+    color:red;
+}
 body {
     font-family: 'Circular Std Book';
     font-style: normal;

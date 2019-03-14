@@ -8,11 +8,14 @@ package CRUD;
 import Controller.products;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -33,12 +36,32 @@ public class products_delete extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
+        
+        HttpSession session = request.getSession();
          String sid=request.getParameter("id");  
         int id=Integer.parseInt(sid);  
-        products.delete(id);  
-        request.setAttribute("status","success");
-        request.setAttribute("alert","Xóa thành công");
-        response.sendRedirect("admin/index.jsp");  
+         
+        int status = products.delete(id); 
+        
+        
+        if(status>0){  
+            
+            session.setAttribute("status","success");
+            session.setAttribute("alert","Xóa thành công");
+//            request.getRequestDispatcher("admind/products.jsp").forward(request, response);
+            response.sendRedirect("admin/index.jsp");
+        }else{  
+            session.setAttribute("status","danger");
+            session.setAttribute("alert","Xóa thất bại");
+            response.sendRedirect("admin/index.jsp");
+            
+           
+        }  
+        
+    
+        
+//          request.getRequestDispatcher("admin/index.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
